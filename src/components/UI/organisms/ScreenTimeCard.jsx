@@ -42,7 +42,7 @@ function ScreenTimeCard({ currentDate }) {
             ])
             setErrors(response1.data.datas)
             setDowns(response2.data.datas)
-            setUpdatedAt(response1.last_update_time)
+            setUpdatedAt(response1.data.last_update_time)
             setDates(response1.data.datas.map((element) => element['DATE']))
         }
         fetchData()
@@ -218,9 +218,15 @@ function ScreenTimeCard({ currentDate }) {
                 </div> */}
             </div>
             <div className="block-footer">
-                {moment().diff(moment(updatedAt)) == 0
+                {/* moment(SpecialToDate).isSame(moment(), 'day'); */}
+                {moment(updatedAt, 'YYYY-MM-DD HH:mm:ss').isSame(
+                    moment(),
+                    'day'
+                )
                     ? '오늘'
-                    : moment(updatedAt).format('YYYY-mm-dd')}{' '}
+                    : moment(updatedAt, 'YYYY-MM-DD HH:mm:ss').format(
+                          'YYYY-mm-dd'
+                      )}{' '}
                 {moment(updatedAt).format('A HH:mm')}에 업데이트 됨
             </div>
         </div>
