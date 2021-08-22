@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import moment from 'moment'
 import 'moment/locale/ko'
 import axios from 'axios'
@@ -9,7 +9,7 @@ function ScreenTimeCard({ currentDate }) {
     const [errors, setErrors] = useState([])
     const [downs, setDowns] = useState([])
     const [updatedAt, setUpdatedAt] = useState('')
-    const [activeIndex, setActiveIndex] = useState(0)
+    const [activeIndex, setActiveIndex] = useState(undefined)
     const subtract7days = date.clone().subtract(6, 'days').format('YYYY-MM-DD')
     const promise1 = axios.get('/api/v1/alarms/error', {
         params: {
@@ -37,6 +37,14 @@ function ScreenTimeCard({ currentDate }) {
         fetchData()
     }, [])
 
+    const handleClick = useCallback(
+        (entry, index) => {
+            console.log(index)
+            setActiveIndex(index)
+        },
+        [setActiveIndex]
+    )
+
     const d = errors.map((element) => element['DATE'])
     const er = errors.map((element) => element['COUNT'])
     const dd = downs.map((element) => element['COUNT'])
@@ -49,7 +57,7 @@ function ScreenTimeCard({ currentDate }) {
     d.forEach((element, index) => {
         const dayOfWeek = moment(element, 'YYYY-MM-DD').format('ddd')
         if (activeIndex == index) {
-            c.push({ uv: er[index], pv: dd[index] })
+            c.push({ name: dayOfWeek, uv: er[index], pv: dd[index] })
             return
         }
         c.push({ name: dayOfWeek, amt: t[index] })
@@ -78,7 +86,11 @@ function ScreenTimeCard({ currentDate }) {
                 </div>
                 <div className="card-content">
                     <div className="chart">
-                        <ScreenTimeStackedBarChart data={c} y={a} />
+                        <ScreenTimeStackedBarChart
+                            data={c}
+                            y={a}
+                            handleClick={handleClick}
+                        />
                     </div>
                     {/* <div className="chart"></div> */}
                     <div className="list">
@@ -145,7 +157,12 @@ function ScreenTimeCard({ currentDate }) {
                     </div>
                 </div> */}
             </div>
-            <div className="block-footer">오늘 오후 11:02에 업데이트 됨</div>
+            <div className="block-footer">
+                {moment().diff(moment(updatedAt)) == 0
+                    ? '오늘'
+                    : moment(updatedAt).format('YYYY-mm-dd')}{' '}
+                {moment(updatedAt).format('A HH:mm')}에 업데이트 됨
+            </div>
         </div>
     )
 }

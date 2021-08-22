@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, { PureComponent, useCallback, useState } from 'react'
 import {
     BarChart,
     Bar,
@@ -31,7 +31,7 @@ class CustomizedYAxisTick extends PureComponent {
     }
 }
 
-function ScreenTimeStackedBarChart({ data, y }) {
+function ScreenTimeStackedBarChart({ data, y, handleClick }) {
     return (
         <ResponsiveContainer width="100%" height={120}>
             <BarChart
@@ -44,7 +44,6 @@ function ScreenTimeStackedBarChart({ data, y }) {
                 }}
                 barSize={46}
                 maxBarSize={46}
-                isAnimationActive={false}
             >
                 <CartesianGrid
                     stroke="#c1c1c1"
@@ -77,9 +76,27 @@ function ScreenTimeStackedBarChart({ data, y }) {
                     strokeDasharray="3 3"
                     tick={<CustomizedYAxisTick />}
                 />
-                <Bar dataKey="amt" stackId="a" fill="#d1d0d5" />
-                <Bar dataKey="pv" stackId="a" fill="#fc9f0a" />
-                <Bar dataKey="uv" stackId="a" fill="#0a84ff" />
+                <Bar
+                    dataKey="amt"
+                    stackId="a"
+                    fill="#d1d0d5"
+                    isAnimationActive={false}
+                    onClick={handleClick}
+                />
+                <Bar
+                    dataKey="pv"
+                    stackId="a"
+                    fill="#fc9f0a"
+                    isAnimationActive={false}
+                    onClick={handleClick}
+                />
+                <Bar
+                    dataKey="uv"
+                    stackId="a"
+                    fill="#0a84ff"
+                    isAnimationActive={false}
+                    onClick={handleClick}
+                />
                 <ReferenceLine
                     y={y}
                     stroke="#67be65"
