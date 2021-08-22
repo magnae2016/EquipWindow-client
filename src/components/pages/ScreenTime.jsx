@@ -1,9 +1,14 @@
 import React, { useState } from 'react'
 import './ScreenTime.css'
 import ScreenTimeCard from '@/components/UI/organisms/ScreenTimeCard'
+import MostUsedCard from '@/components/UI/organisms/MostUsedCard'
 
 function ScreenTime(params) {
     const [currentDate, setCurrentDate] = useState(new Date())
+
+    function handleChangeCurrentDate(date) {
+        setCurrentDate(date)
+    }
     return (
         <div className="page">
             <div className="navbars">
@@ -62,212 +67,11 @@ function ScreenTime(params) {
                             </div>
                         </div>
                     </div>
-                    <ScreenTimeCard currentDate={currentDate} />
-                    <div style={{ marginTop: 16 }}>
-                        <div className="block-title">최다 사용</div>
-                        <div className="block-right">카테고리 보기</div>
-                        <div className="card">
-                            <div className="card-content-padding">
-                                <div className="list">
-                                    <div className="list-group">
-                                        <ul>
-                                            <li>
-                                                <a className="item-link item-content">
-                                                    <div className="item-media">
-                                                        <i className="icon icon-f7"></i>
-                                                    </div>
-                                                    <div className="item-inner">
-                                                        <div className="item-title">
-                                                            <div className="item-header">
-                                                                Safari
-                                                            </div>
-                                                        </div>
-                                                        <div className="progress">
-                                                            <div
-                                                                className="progressbar"
-                                                                style={{
-                                                                    width: '34.5%',
-                                                                }}
-                                                            ></div>
-                                                            <div className="progressbar-title">
-                                                                30시간 55분
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <ion-icon name="chevron-forward"></ion-icon>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a className="item-link item-content">
-                                                    <div className="item-media">
-                                                        <i className="icon icon-f7"></i>
-                                                    </div>
-                                                    <div className="item-inner">
-                                                        <div className="item-title">
-                                                            <div className="item-header">
-                                                                Safari
-                                                            </div>
-                                                        </div>
-                                                        <div className="progress">
-                                                            <div
-                                                                className="progressbar"
-                                                                style={{
-                                                                    width: '10%',
-                                                                }}
-                                                            ></div>
-                                                            <div className="progressbar-title">
-                                                                30시간 55분
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <ion-icon name="chevron-forward"></ion-icon>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a className="item-link item-content">
-                                                    <div className="item-media">
-                                                        <i className="icon icon-f7"></i>
-                                                    </div>
-                                                    <div className="item-inner">
-                                                        <div className="item-title">
-                                                            <div className="item-header">
-                                                                Safari
-                                                            </div>
-                                                        </div>
-                                                        <div className="progress">
-                                                            <div
-                                                                className="progressbar"
-                                                                style={{
-                                                                    width: '34.5%',
-                                                                }}
-                                                            ></div>
-                                                            <div className="progressbar-title">
-                                                                30시간 55분
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <ion-icon name="chevron-forward"></ion-icon>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a className="item-link item-content">
-                                                    <div className="item-media">
-                                                        <i className="icon icon-f7"></i>
-                                                    </div>
-                                                    <div className="item-inner">
-                                                        <div className="item-title">
-                                                            <div className="item-header">
-                                                                Safari
-                                                            </div>
-                                                        </div>
-                                                        <div className="progress">
-                                                            <div
-                                                                className="progressbar"
-                                                                style={{
-                                                                    width: '34.5%',
-                                                                }}
-                                                            ></div>
-                                                            <div className="progressbar-title">
-                                                                30시간 55분
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <ion-icon name="chevron-forward"></ion-icon>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a className="item-link item-content">
-                                                    <div className="item-media">
-                                                        <i className="icon icon-f7"></i>
-                                                    </div>
-                                                    <div className="item-inner">
-                                                        <div className="item-title">
-                                                            <div className="item-header">
-                                                                Safari
-                                                            </div>
-                                                        </div>
-                                                        <div className="progress">
-                                                            <div
-                                                                className="progressbar"
-                                                                style={{
-                                                                    width: '34.5%',
-                                                                }}
-                                                            ></div>
-                                                            <div className="progressbar-title">
-                                                                30시간 55분
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <ion-icon name="chevron-forward"></ion-icon>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a className="item-link item-content">
-                                                    <div className="item-media">
-                                                        <i className="icon icon-f7"></i>
-                                                    </div>
-                                                    <div className="item-inner">
-                                                        <div className="item-title">
-                                                            <div className="item-header">
-                                                                Safari
-                                                            </div>
-                                                        </div>
-                                                        <div className="progress">
-                                                            <div
-                                                                className="progressbar"
-                                                                style={{
-                                                                    width: '34.5%',
-                                                                }}
-                                                            ></div>
-                                                            <div className="progressbar-title">
-                                                                30시간 55분
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <ion-icon name="chevron-forward"></ion-icon>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a className="item-link item-content">
-                                                    <div className="item-media">
-                                                        <i className="icon icon-f7"></i>
-                                                    </div>
-                                                    <div className="item-inner">
-                                                        <div className="item-title">
-                                                            <div className="item-header">
-                                                                Safari
-                                                            </div>
-                                                        </div>
-                                                        <div className="progress">
-                                                            <div
-                                                                className="progressbar"
-                                                                style={{
-                                                                    width: '34.5%',
-                                                                }}
-                                                            ></div>
-                                                            <div className="progressbar-title">
-                                                                30시간 55분
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <ion-icon name="chevron-forward"></ion-icon>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="card-footer">
-                                <div className="item-content">
-                                    <div className="item-inner">
-                                        <div className="item-title">
-                                            자세히 보기
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <ScreenTimeCard
+                        currentDate={currentDate}
+                        onChangeCurrentDate={handleChangeCurrentDate}
+                    />
+                    <MostUsedCard currentDate={currentDate} />
                 </div>
             </div>
         </div>

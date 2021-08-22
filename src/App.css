@@ -95,3 +95,7 @@ input:focus {
     flex: 1;
     overflow: hidden;
 }
+
+.pointer {
+    cursor: pointer;
+}

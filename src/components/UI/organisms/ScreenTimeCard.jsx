@@ -5,7 +5,7 @@ import axios from 'axios'
 import ScreenTimeStackedBarChart from '@/components/UI/atoms/ScreenTimeStackedBarChart'
 import BatteryPerformanceBarChart from '@/components/UI/atoms/BatteryPerformanceBarChart'
 
-function ScreenTimeCard({ currentDate }) {
+function ScreenTimeCard({ currentDate, onChangeCurrentDate }) {
     const date = moment(currentDate)
     const [dates, setDates] = useState([])
     const [errors, setErrors] = useState([])
@@ -28,12 +28,6 @@ function ScreenTimeCard({ currentDate }) {
         },
     })
 
-    const promise3 = axios.get('/api/v1/alarms/increment', {
-        params: {
-            startDate: date.format('YYYY-MM-DD'),
-        },
-    })
-
     useEffect(() => {
         async function fetchData() {
             const [response1, response2] = await Promise.all([
@@ -50,6 +44,7 @@ function ScreenTimeCard({ currentDate }) {
 
     const handleClick = useCallback(
         (entry, index) => {
+            onChangeCurrentDate(dates[index])
             async function fetchData() {
                 const response = await axios.get('/api/v1/alarms/increment', {
                     params: { startDate: dates[index] },
@@ -92,6 +87,7 @@ function ScreenTimeCard({ currentDate }) {
     return (
         <div>
             <div className="block-title">알람 발생 현황</div>
+            <div className="block-right">오늘 보기</div>
             <div className="card">
                 <div className="card-header">
                     <div className="item-inner">
