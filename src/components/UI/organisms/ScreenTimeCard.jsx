@@ -13,8 +13,9 @@ function ScreenTimeCard({ currentDate }) {
     const [increment, setIncrement] = useState([])
     const [incrementSign, setIncrementSign] = useState([])
     const [updatedAt, setUpdatedAt] = useState('')
-    const [activeIndex, setActiveIndex] = useState(6)
+    const [activeIndex, setActiveIndex] = useState(undefined)
     const subtract7days = date.clone().subtract(6, 'days').format('YYYY-MM-DD')
+    const formatString = 'M월 D일 dddd'
     const promise1 = axios.get('/api/v1/alarms/error', {
         params: {
             startDate: subtract7days,
@@ -95,12 +96,19 @@ function ScreenTimeCard({ currentDate }) {
                 <div className="card-header">
                     <div className="item-inner">
                         <div className="item-subtitle">
-                            {date.format('M월 D일 dddd')}
+                            {dates[activeIndex]
+                                ? moment(dates[activeIndex]).format(
+                                      formatString
+                                  )
+                                : moment(dates.slice(-2)[0]).format(
+                                      formatString
+                                  )}
                         </div>
                         <div className="item-title-row">
                             <div className="item-title">
-                                {t.slice(-1)[0] &&
-                                    t.slice(-1)[0].toLocaleString()}
+                                {t[activeIndex]
+                                    ? t[activeIndex].toLocaleString()
+                                    : t.slice(-1)[0]}{' '}
                                 건
                             </div>
                             {/* <div className="item-text">
@@ -118,20 +126,24 @@ function ScreenTimeCard({ currentDate }) {
                             handleClick={handleClick}
                         />
                     </div>
-                    <div className="chart">
-                        <BatteryPerformanceBarChart
-                            syncId="anyId"
-                            data={increment}
-                            fill="#34c759"
-                        />
-                    </div>
-                    <div className="chart">
-                        <BatteryPerformanceBarChart
-                            syncId="anyId"
-                            data={incrementSign}
-                            fill="#aeaeb2"
-                        />
-                    </div>
+                    {activeIndex != undefined && (
+                        <div>
+                            <div className="chart">
+                                <BatteryPerformanceBarChart
+                                    syncId="anyId"
+                                    data={increment}
+                                    fill="#34c759"
+                                />
+                            </div>
+                            <div className="chart">
+                                <BatteryPerformanceBarChart
+                                    syncId="anyId"
+                                    data={incrementSign}
+                                    fill="#aeaeb2"
+                                />
+                            </div>
+                        </div>
+                    )}
                     <div className="list">
                         <ul>
                             <li>
@@ -144,10 +156,13 @@ function ScreenTimeCard({ currentDate }) {
                                                         <div className="item-header">
                                                             전체 알람
                                                         </div>
-                                                        {t[activeIndex] &&
-                                                            t[
-                                                                activeIndex
-                                                            ].toLocaleString()}{' '}
+                                                        {t[activeIndex]
+                                                            ? t[
+                                                                  activeIndex
+                                                              ].toLocaleString()
+                                                            : t.slice(
+                                                                  -1
+                                                              )[0]}{' '}
                                                         건
                                                     </div>
                                                 </div>
@@ -158,10 +173,13 @@ function ScreenTimeCard({ currentDate }) {
                                                         <div className="item-header error">
                                                             Error 알람
                                                         </div>
-                                                        {er[activeIndex] &&
-                                                            er[
-                                                                activeIndex
-                                                            ].toLocaleString()}{' '}
+                                                        {er[activeIndex]
+                                                            ? er[
+                                                                  activeIndex
+                                                              ].toLocaleString()
+                                                            : er.slice(
+                                                                  -1
+                                                              )[0]}{' '}
                                                         건
                                                     </div>
                                                 </div>
@@ -172,10 +190,13 @@ function ScreenTimeCard({ currentDate }) {
                                                         <div className="item-header down">
                                                             Down 알람
                                                         </div>
-                                                        {dd[activeIndex] &&
-                                                            dd[
-                                                                activeIndex
-                                                            ].toLocaleString()}{' '}
+                                                        {dd[activeIndex]
+                                                            ? dd[
+                                                                  activeIndex
+                                                              ].toLocaleString()
+                                                            : dd.slice(
+                                                                  -1
+                                                              )[0]}{' '}
                                                         건
                                                     </div>
                                                 </div>
