@@ -1,0 +1,519 @@
+.column_right .view-main {
+    width: 100%;
+    position: relative;
+}
+
+.navbars .navbar-current {
+    display: none;
+    box-shadow: 0 1px 8px 0 rgb(0 0 0 / 12%);
+}
+
+.navbar .appbar {
+    height: 80px;
+    position: relative;
+}
+
+.navbar-current .appbar {
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #d3d3d3;
+}
+
+.navbar .appbar-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    text-align: center;
+    padding-bottom: 17px;
+    box-sizing: border-box;
+}
+
+.navbar .appbar-inner .left {
+    position: absolute;
+    left: 0;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 34px;
+    color: #1e6bf5;
+}
+
+.navbar .appbar-inner .back {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 19px;
+}
+
+.navbar .appbar-inner .back ion-icon {
+    font-size: 30px;
+    position: absolute;
+    left: 5px;
+    bottom: -5px;
+}
+
+.navbar .appbar-inner .title {
+    margin: 0 auto;
+    font-size: 19px;
+    letter-spacing: -0.5px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.navbar-current .navbar-bg {
+    height: 64px;
+    text-align: center;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.72);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    transition: background-color 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
+}
+
+.navbar-current .navbar-bg .navbar-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+
+.navbar .navbar-bg .left,
+.navbar .navbar-bg .right {
+    position: relative;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 17px;
+}
+
+.navbar .navbar-bg .left .back,
+.navbar .navbar-bg .right .after {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    position: relative;
+    box-sizing: border-box;
+    width: 30px;
+    height: 30px;
+    background-color: #cadffc;
+    border-radius: 50%;
+}
+
+.navbar-current .navbar-bg .left .back ion-icon,
+.navbar-current .navbar-bg .right .after ion-icon {
+    font-size: 24px;
+    margin: 0 auto;
+    color: #1e6bf5;
+}
+
+.navbar-current .navbar-bg .title {
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex-shrink: 10;
+    display: inline-block;
+    margin: 0 auto;
+    font-size: 19px;
+    color: #030402;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.column_right .block {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    overflow: hidden;
+    overflow-y: auto;
+    padding-left: 54px;
+    padding-right: 55px;
+    padding-top: 18px;
+    padding-bottom: 62px;
+}
+
+.page-content .subnavbar {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 17px;
+    padding-right: 17px;
+    margin-bottom: 28px;
+}
+
+.subnavbar-inner {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.subnavbar-inner .segmented {
+    align-self: center;
+    display: flex;
+    /*    flex-wrap: nowrap;*/
+    width: 100%;
+    position: relative;
+    background: #e3e2e8;
+    border-radius: 7px;
+    box-shadow: none;
+    padding: 2px 3px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.subnavbar-inner .segmented .button {
+    text-align: center;
+    display: flex;
+    width: 100%;
+    flex-shrink: 1;
+    min-width: 0;
+    border-radius: 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    vertical-align: middle;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    appearance: none;
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+}
+
+.subnavbar-inner .button.tab-link-active {
+    background: #ffffff;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 25%);
+}
+
+.block-title,
+.block-footer,
+.block-right {
+    display: inline-block;
+    padding-left: 19px;
+    padding-top: 7px;
+    padding-bottom: 6px;
+    font-size: 14px;
+    color: #77767b;
+}
+
+.block-footer {
+    padding-top: 6px;
+    letter-spacing: -0px;
+    padding-bottom: 0;
+}
+
+.block-right {
+    margin-left: 0;
+    padding-right: 19px;
+    float: right;
+    color: #63a1f8;
+}
+
+.page-content .card {
+    padding-left: 17px;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.page-content .card .card-header {
+    padding-right: 17px;
+    position: relative;
+}
+
+.page-content .card .card-header .item-inner {
+    padding-top: 22px;
+    padding-bottom: 12px;
+}
+
+.page-content .card-header .item-subtitle {
+    color: #838384;
+    font-size: 19px;
+}
+
+.page-content .card-header .item-title-row {
+    padding-top: 6px;
+    position: relative;
+}
+
+.page-content .card-header .item-inner .item-title {
+    font-size: 37px;
+    line-height: 37px;
+    height: 37px;
+    overflow: hidden;
+}
+
+.page-content .card-header .item-inner .item-text {
+    color: #757578;
+    font-size: 19px;
+    position: absolute;
+    right: 0;
+    bottom: 2px;
+    letter-spacing: -0.3px;
+}
+
+.page-content .card-header .item-inner .item-text ion-icon {
+    position: relative;
+    top: 2px;
+    right: 2px;
+}
+
+.page-content .card-content {
+    padding-right: 17px;
+    position: relative;
+}
+
+.page-content .card-content::after {
+    content: '';
+    position: absolute;
+    background-color: #e5e5e5;
+    display: block;
+    z-index: 15;
+    top: auto;
+    right: auto;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    transform-origin: 50% 100%;
+}
+
+.page-content .chart {
+    width: 100%;
+    height: 120px;
+    position: relative;
+    background-color: #e9e9eb;
+}
+
+.page-content .chart + .chart {
+    margin-top: 32px;
+}
+
+.page-content .card-content .list,
+.page-content .card-content .list li {
+    position: relative;
+    box-sizing: border-box;
+}
+
+.page-content .card-content .list ul {
+    padding-top: 12px;
+    padding-bottom: 11px;
+}
+
+.page-content .card-content .list .item-content,
+.page-content .card-content-padding .list .item-content {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.page-content .card-content .list .item-row {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.page-content .card-content .list .item-cell {
+    display: block;
+    align-self: center;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    flex-shrink: 1;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.page-content .card-content .list .item-cell:nth-child(3n + 2) > div {
+    text-align: center;
+}
+
+.page-content .card-content .list .item-cell:nth-child(3n) > div {
+    text-align: right;
+}
+
+.page-content .card-content .list .item-cell .item-title {
+    font-size: 18px;
+    letter-spacing: -1px;
+    text-align: left;
+    display: inline-block;
+}
+
+.page-content .card-content .list .item-cell .item-title .item-header {
+    font-size: 17px;
+    margin-bottom: 2px;
+    color: #838384;
+    letter-spacing: -0.3px;
+}
+
+.page-content .card-footer .item-content {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.page-content .card-footer .item-inner {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    align-items: center;
+    align-self: stretch;
+    padding-right: 17px;
+    padding-top: 15px;
+    padding-bottom: 16px;
+}
+
+.page-content .card-footer .item-title {
+    min-width: 0;
+    flex-shrink: 1;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    font-size: 19px;
+}
+
+.page-content .card-footer .item-after {
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: flex;
+    margin-left: auto;
+    font-size: 19px;
+    letter-spacing: 0px;
+    color: #757578;
+}
+
+.page-content .list-group .item-content {
+    min-height: 59px;
+    position: relative;
+}
+
+.page-content .list-group .item-media {
+    display: flex;
+    flex-shrink: 0;
+    flex-wrap: nowrap;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.page-content .list-group .item-media {
+    display: flex;
+    flex-shrink: 0;
+    flex-wrap: nowrap;
+    align-items: center;
+    box-sizing: border-box;
+    padding-left: 1px;
+}
+
+.icon-f7 {
+    display: inline-block;
+    vertical-align: middle;
+    background-size: 100% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-style: normal;
+    position: relative;
+    background: #b2b2b2;
+    color: #fff !important;
+    border-radius: 50%;
+    text-align: center;
+    width: 31px;
+    height: 31px;
+    line-height: 31px;
+}
+
+.icon-f7:before {
+    content: '7';
+}
+
+.page-content .list-group .item-inner {
+    margin-left: 17px;
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    align-items: flex-start;
+    align-self: stretch;
+    padding-right: 36px;
+    flex-direction: column;
+    padding-top: 10px;
+    padding-bottom: 9px;
+}
+
+.page-content .list-group .item-title {
+    min-width: 0;
+    flex-shrink: 1;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    display: block;
+}
+
+.page-content .list-group .item-header {
+    font-size: 19px;
+}
+
+.page-content .list-group .progress {
+    width: 100%;
+    height: 15px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+
+.page-content .list-group .progressbar {
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    background: #d1d0d5;
+    height: 5px;
+    border-radius: 5px;
+    background: #d1d0d5;
+}
+
+.page-content .list-group .progressbar-title {
+    font-size: 14px;
+    padding-left: 8px;
+    color: #c9c9c8;
+}
+
+.page-content .list-group ion-icon {
+    font-size: 19px;
+    position: absolute;
+    right: 13px;
+    color: #b3b3b5;
+}
+
+.card-content-padding + .card-footer .item-inner {
+    padding-left: 49px;
+    color: #63a1f8;
+}
