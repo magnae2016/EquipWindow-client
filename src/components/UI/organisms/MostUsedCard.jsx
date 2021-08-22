@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import moment from 'moment'
 import 'moment/locale/ko'
 import axios from 'axios'
+import nonMoving from '@/assets/images/ios12-control-center-airplane-mode-icon.png'
 import run from '@/assets/images/ios14-screentime-always-allowed-icon.png'
 import error from '@/assets/images/ios14-screentime-always-allowed-icon.png'
 import down from '@/assets/images/ios14-screentime-always-allowed-icon.png'
@@ -11,7 +12,9 @@ function ListItem({ title, percent, value, thumbnail }) {
         <li>
             <a className="item-link item-content">
                 <div className="item-media">
-                    {thumbnail === 0 && <i className="icon icon-f7"></i>}
+                    {thumbnail === 0 && (
+                        <img src={nonMoving} width="31" height="31" />
+                    )}
                     {thumbnail === 1 && (
                         <img src={run} width="31" height="31" />
                     )}

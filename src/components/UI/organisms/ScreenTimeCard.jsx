@@ -87,7 +87,6 @@ function ScreenTimeCard({ currentDate, onChangeCurrentDate }) {
     return (
         <div>
             <div className="block-title">알람 발생 현황</div>
-            <div className="block-right">오늘 보기</div>
             <div className="card">
                 <div className="card-header">
                     <div className="item-inner">

@@ -4,8 +4,20 @@
 }
 
 .navbars .navbar-current {
-    display: none;
     box-shadow: 0 1px 8px 0 rgb(0 0 0 / 12%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+}
+
+.navbars .navbar-current.show {
+    display: block;
+}
+
+.navbars .navbar-current.hide {
+    display: none;
 }
 
 .navbar .appbar {
@@ -65,9 +77,9 @@
     height: 64px;
     text-align: center;
     position: relative;
-    background-color: rgba(255, 255, 255, 0.72);
+    background-color: rgba(255, 255, 255, 0.42);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
-    backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(30px);
     transition: background-color 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
 }
 
