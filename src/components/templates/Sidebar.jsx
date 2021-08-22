@@ -16,7 +16,7 @@ function Sidebar(params) {
                                             <div className="searchbar-input-wrap">
                                                 <input
                                                     type="text"
-                                                    placeholder="검색"
+                                                    placeholder="장비명 검색"
                                                     className="searchbar-input"
                                                 />
                                                 <i className="searchbar-icon"></i>
