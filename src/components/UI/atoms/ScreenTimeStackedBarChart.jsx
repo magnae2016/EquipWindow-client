@@ -83,6 +83,7 @@ function ScreenTimeStackedBarChart({ data, y, handleClick }) {
                     fill="#d1d0d5"
                     isAnimationActive={false}
                     onClick={handleClick}
+                    cursor="pointer"
                 />
                 <Bar
                     dataKey="pv"
@@ -90,6 +91,7 @@ function ScreenTimeStackedBarChart({ data, y, handleClick }) {
                     fill="#fc9f0a"
                     isAnimationActive={false}
                     onClick={handleClick}
+                    cursor="pointer"
                 />
                 <Bar
                     dataKey="uv"
@@ -97,6 +99,7 @@ function ScreenTimeStackedBarChart({ data, y, handleClick }) {
                     fill="#0a84ff"
                     isAnimationActive={false}
                     onClick={handleClick}
+                    cursor="pointer"
                 />
                 <ReferenceLine
                     y={y}
