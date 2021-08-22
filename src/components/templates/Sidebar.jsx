@@ -1,5 +1,6 @@
 import React from 'react'
 import './Sidebar.css'
+import downtime from 'assets/images/ios12-screentime-downtime-icon.png'
 
 function Sidebar(params) {
     return (
@@ -45,12 +46,12 @@ function Sidebar(params) {
                                                     <div className="item-inner">
                                                         <div className="item-title-row">
                                                             <h3 className="item-title">
-                                                                Hannah Kim
+                                                                nepes Ark
                                                             </h3>
                                                         </div>
                                                         <div className="item-subtitle">
-                                                            Apple ID, iCloud,
-                                                            미디어 및 구입
+                                                            tester / prober 장비
+                                                            총 146대
                                                         </div>
                                                     </div>
                                                 </li>
@@ -65,121 +66,12 @@ function Sidebar(params) {
                                 <li>
                                     <a className="item-content item-link item-selected">
                                         <div className="item-media">
-                                            <img
-                                                src="../ios12-screentime-icon.png"
-                                                width="31px"
-                                            />
+                                            <img src={downtime} width="31px" />
                                         </div>
                                         <div className="item-inner">
                                             <div className="item-title-row">
                                                 <div className="item-title">
-                                                    에어플레인 모드
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a className="item-content item-link item-selected">
-                                        <div className="item-media">
-                                            <img
-                                                src="../ios12-screentime-icon.png"
-                                                width="31px"
-                                            />
-                                        </div>
-                                        <div className="item-inner">
-                                            <div className="item-title-row">
-                                                <div className="item-title">
-                                                    에어플레인 모드
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a className="item-content item-link item-selected">
-                                        <div className="item-media">
-                                            <img
-                                                src="../ios12-screentime-icon.png"
-                                                width="31px"
-                                            />
-                                        </div>
-                                        <div className="item-inner">
-                                            <div className="item-title-row">
-                                                <div className="item-title">
-                                                    에어플레인 모드
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="list menu-list">
-                            <ul>
-                                <li>
-                                    <a className="item-content item-link item-selected">
-                                        <div className="item-media">
-                                            <img
-                                                src="../ios12-screentime-downtime-icon.png"
-                                                width="31px"
-                                            />
-                                        </div>
-                                        <div className="item-inner">
-                                            <div className="item-title-row">
-                                                <div className="item-title">
-                                                    디스플레이 및 밝기
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a className="item-content item-link item-selected">
-                                        <div className="item-media">
-                                            <img
-                                                src="../ios12-screentime-downtime-icon.png"
-                                                width="31px"
-                                            />
-                                        </div>
-                                        <div className="item-inner">
-                                            <div className="item-title-row">
-                                                <div className="item-title">
-                                                    디스플레이 및 밝기
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a className="item-content item-link item-selected">
-                                        <div className="item-media">
-                                            <img
-                                                src="../ios12-screentime-downtime-icon.png"
-                                                width="31px"
-                                            />
-                                        </div>
-                                        <div className="item-inner">
-                                            <div className="item-title-row">
-                                                <div className="item-title">
-                                                    디스플레이 및 밝기
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a className="item-content item-link item-selected">
-                                        <div className="item-media">
-                                            <img
-                                                src="../ios12-screentime-downtime-icon.png"
-                                                width="31px"
-                                            />
-                                        </div>
-                                        <div className="item-inner">
-                                            <div className="item-title-row">
-                                                <div className="item-title">
-                                                    디스플레이 및 밝기
+                                                    알람
                                                 </div>
                                             </div>
                                         </div>

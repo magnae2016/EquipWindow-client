@@ -160,7 +160,11 @@
     width: 65px;
     height: 65px;
     border-radius: 50%;
-    background: #e9e9eb;
+    background: #ffffff;
+    background-image: url('assets/images/nepes_CI.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .menu-item .card .item-inner {
@@ -188,7 +192,6 @@
     flex-shrink: 1;
     white-space: nowrap;
     position: relative;
-    overflow: hidden;
     text-overflow: ellipsis;
     max-width: 100%;
     font-size: 24px;
