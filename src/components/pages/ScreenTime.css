@@ -303,11 +303,12 @@
     width: 100%;
     height: 120px;
     position: relative;
-    /* background-color: #e9e9eb; */
+    overflow: hidden;
 }
 
 .page-content .chart + .chart {
     margin-top: 32px;
+    /* background-color: #e9e9eb; */
 }
 
 .page-content .card-content .list,

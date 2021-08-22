@@ -3,13 +3,16 @@ import moment from 'moment'
 import 'moment/locale/ko'
 import axios from 'axios'
 import ScreenTimeStackedBarChart from '@/components/UI/atoms/ScreenTimeStackedBarChart'
+import BatteryPerformanceBarChart from '@/components/UI/atoms/BatteryPerformanceBarChart'
 
 function ScreenTimeCard({ currentDate }) {
     const date = moment(currentDate)
     const [errors, setErrors] = useState([])
     const [downs, setDowns] = useState([])
+    const [increment, setIncrement] = useState([])
+    const [incrementSign, setIncrementSign] = useState([])
     const [updatedAt, setUpdatedAt] = useState('')
-    const [activeIndex, setActiveIndex] = useState(undefined)
+    const [activeIndex, setActiveIndex] = useState(6)
     const subtract7days = date.clone().subtract(6, 'days').format('YYYY-MM-DD')
     const promise1 = axios.get('/api/v1/alarms/error', {
         params: {
@@ -23,6 +26,12 @@ function ScreenTimeCard({ currentDate }) {
         },
     })
 
+    const promise3 = axios.get('/api/v1/alarms/increment', {
+        params: {
+            startDate: date.format('YYYY-MM-DD'),
+        },
+    })
+
     useEffect(() => {
         async function fetchData() {
             const [response1, response2] = await Promise.all([
@@ -32,7 +41,6 @@ function ScreenTimeCard({ currentDate }) {
             setErrors(response1.data.datas)
             setDowns(response2.data.datas)
             setUpdatedAt(response1.last_update_time)
-            setActiveIndex(response1.data.datas.length - 1)
         }
         fetchData()
     }, [])
@@ -40,6 +48,24 @@ function ScreenTimeCard({ currentDate }) {
     const handleClick = useCallback(
         (entry, index) => {
             console.log(index)
+            async function fetchData() {
+                console.log(1234)
+                const response = await axios.get('/api/v1/alarms/increment')
+                console.log(response.data)
+                setIncrement(response.data)
+                const df = response.data.map((element) => element['diff'])
+                const av = df.reduce((a, b) => a + b, 0) / df.length
+                console.log(av)
+                setIncrementSign(
+                    df.map((element, i) => {
+                        return Object.assign(
+                            {},
+                            { Hour: response.data[i].Hour, diff: element - av }
+                        )
+                    })
+                )
+            }
+            fetchData()
             setActiveIndex(index)
         },
         [setActiveIndex]
@@ -92,7 +118,20 @@ function ScreenTimeCard({ currentDate }) {
                             handleClick={handleClick}
                         />
                     </div>
-                    {/* <div className="chart"></div> */}
+                    <div className="chart">
+                        <BatteryPerformanceBarChart
+                            syncId="anyId"
+                            data={increment}
+                            fill="#34c759"
+                        />
+                    </div>
+                    <div className="chart">
+                        <BatteryPerformanceBarChart
+                            syncId="anyId"
+                            data={incrementSign}
+                            fill="#aeaeb2"
+                        />
+                    </div>
                     <div className="list">
                         <ul>
                             <li>

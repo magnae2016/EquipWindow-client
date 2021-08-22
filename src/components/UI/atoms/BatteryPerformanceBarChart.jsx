@@ -1,13 +1,36 @@
-import React, { PureComponent, useCallback, useState } from 'react'
+import React, { PureComponent } from 'react'
 import {
     BarChart,
     Bar,
     XAxis,
     YAxis,
     CartesianGrid,
-    ReferenceLine,
+    Tooltip,
     ResponsiveContainer,
 } from 'recharts'
+
+class CustomizedXAxisTick extends PureComponent {
+    render() {
+        const { x, y, payload } = this.props
+
+        return (
+            <g transform={`translate(${x},${y})`}>
+                <text
+                    x={0}
+                    y={0}
+                    dx={20}
+                    dy={-2}
+                    textAnchor="middle"
+                    fontSize={13}
+                    fill="#c1c1c1"
+                    letterSpacing="-0.3"
+                >
+                    {payload.value}
+                </text>
+            </g>
+        )
+    }
+}
 
 class CustomizedYAxisTick extends PureComponent {
     render() {
@@ -19,6 +42,7 @@ class CustomizedYAxisTick extends PureComponent {
                     x={0}
                     y={0}
                     dx={4}
+                    dy={1}
                     textAnchor="start"
                     fontSize={14}
                     fill="#c1c1c1"
@@ -31,7 +55,7 @@ class CustomizedYAxisTick extends PureComponent {
     }
 }
 
-function ScreenTimeStackedBarChart({ data, y, handleClick }) {
+function BatteryPerformanceBarChart({ data, scale = 'auto', fill, syncId }) {
     return (
         <ResponsiveContainer width="100%" height={120}>
             <BarChart
@@ -42,8 +66,8 @@ function ScreenTimeStackedBarChart({ data, y, handleClick }) {
                     left: 0,
                     bottom: 0,
                 }}
-                barSize={46}
-                maxBarSize={46}
+                syncId={syncId}
+                // barSize={2}
             >
                 <CartesianGrid
                     stroke="#c1c1c1"
@@ -51,16 +75,20 @@ function ScreenTimeStackedBarChart({ data, y, handleClick }) {
                     fill="#FFFFFF"
                 />
                 <XAxis
-                    dataKey="name"
+                    interval={35}
+                    tickCount={4}
+                    dataKey="Hour"
                     height={21}
-                    interval={0}
                     padding={{ left: 0, right: 0 }}
                     tick={{
                         fill: '#c1c1c1',
                         fontSize: 14,
+                        strokeDasharray: '3 3',
                     }}
+                    tickSize={20}
                     stroke="#c1c1c1"
                     strokeWidth={0.3}
+                    tick={<CustomizedXAxisTick />}
                 />
                 <YAxis
                     orientation="right"
@@ -75,37 +103,18 @@ function ScreenTimeStackedBarChart({ data, y, handleClick }) {
                     stroke="#c1c1c1"
                     strokeDasharray="3 3"
                     tick={<CustomizedYAxisTick />}
+                    scale={scale}
                 />
+                <Tooltip />
                 <Bar
-                    dataKey="amt"
+                    dataKey="diff"
                     stackId="a"
-                    fill="#d1d0d5"
+                    fill={fill}
                     isAnimationActive={false}
-                    onClick={handleClick}
-                />
-                <Bar
-                    dataKey="pv"
-                    stackId="a"
-                    fill="#fc9f0a"
-                    isAnimationActive={false}
-                    onClick={handleClick}
-                />
-                <Bar
-                    dataKey="uv"
-                    stackId="a"
-                    fill="#0a84ff"
-                    isAnimationActive={false}
-                    onClick={handleClick}
-                />
-                <ReferenceLine
-                    y={y}
-                    stroke="#67be65"
-                    strokeDasharray="3 3"
-                    strokeWidth={2}
                 />
             </BarChart>
         </ResponsiveContainer>
     )
 }
 
-export default ScreenTimeStackedBarChart
+export default BatteryPerformanceBarChart
