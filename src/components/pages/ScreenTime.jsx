@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './ScreenTime.css'
+import ScreenTimeCard from '@/components/UI/organisms/ScreenTimeCard'
 
 function ScreenTime(params) {
+    const [currentDate, setCurrentDate] = useState(new Date())
     return (
         <div className="page">
             <div className="navbars">
@@ -38,7 +40,7 @@ function ScreenTime(params) {
                 <div className="navbar">
                     <div className="appbar">
                         <div className="appbar-inner">
-                            <div className="title">모든 기기</div>
+                            <div className="title">알람 모니터링</div>
                         </div>
                     </div>
                 </div>
@@ -48,99 +50,19 @@ function ScreenTime(params) {
                     <div className="subnavbar">
                         <div className="subnavbar-inner">
                             <div className="segmented">
-                                <a
-                                    href="#tab1"
-                                    className="button tab-link tab-link-active"
-                                >
+                                <a href="#tab1" className="button tab-link">
                                     주
                                 </a>
-                                <a href="#tab2" className="button tab-link">
+                                <a
+                                    href="#tab2"
+                                    className="button tab-link tab-link-active"
+                                >
                                     일
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <div className="block-title">스크린 타임</div>
-                        <div className="card">
-                            <div className="card-header">
-                                <div className="item-inner">
-                                    <div className="item-subtitle">
-                                        일일 평균
-                                    </div>
-                                    <div className="item-title-row">
-                                        <div className="item-title">11시간</div>
-                                        <div className="item-text">
-                                            <ion-icon name="arrow-up-circle"></ion-icon>
-                                            지난주 대비 95%
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="card-content">
-                                <div className="chart"></div>
-                                <div className="chart"></div>
-                                <div className="list">
-                                    <ul>
-                                        <li>
-                                            <div className="item-content">
-                                                <div className="item-inner item-cell">
-                                                    <div className="item-row">
-                                                        <div className="item-cell">
-                                                            <div>
-                                                                <div className="item-title">
-                                                                    <div className="item-header">
-                                                                        기타
-                                                                    </div>
-                                                                    27시간 28분
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="item-cell">
-                                                            <div>
-                                                                <div className="item-title">
-                                                                    <div className="item-header">
-                                                                        엔터테인먼트
-                                                                    </div>
-                                                                    25시간 45분
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="item-cell">
-                                                            <div>
-                                                                <div className="item-title">
-                                                                    <div className="item-header">
-                                                                        생산성
-                                                                        및 금융
-                                                                    </div>
-                                                                    27시간 28분
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className="card-footer">
-                                <div className="item-content">
-                                    <div className="item-inner">
-                                        <div className="item-title">
-                                            총 스크린 타임
-                                        </div>
-                                        <div className="item-after">
-                                            77시간 1분
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="block-footer">
-                            오늘 오후 11:02에 업데이트 됨
-                        </div>
-                    </div>
+                    <ScreenTimeCard currentDate={currentDate} />
                     <div style={{ marginTop: 16 }}>
                         <div className="block-title">최다 사용</div>
                         <div className="block-right">카테고리 보기</div>

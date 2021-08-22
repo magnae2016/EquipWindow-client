@@ -71,7 +71,7 @@ function Sidebar(params) {
                                         <div className="item-inner">
                                             <div className="item-title-row">
                                                 <div className="item-title">
-                                                    알람
+                                                    알람 기반 장애 감지
                                                 </div>
                                             </div>
                                         </div>
