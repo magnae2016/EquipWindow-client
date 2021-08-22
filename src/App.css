@@ -48,6 +48,15 @@ textarea {
         'Apple SD Gothic Neo', Arial, sans-serif;
 }
 
+textarea:focus,
+input:focus {
+    outline: none;
+}
+
+*:focus {
+    outline: none;
+}
+
 .App {
     display: flex;
     flex-direction: column;
