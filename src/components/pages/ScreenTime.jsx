@@ -4,6 +4,7 @@ import 'moment/locale/ko'
 import './ScreenTime.css'
 import ScreenTimeCard from '@/components/UI/organisms/ScreenTimeCard'
 import MostUsedCard from '@/components/UI/organisms/MostUsedCard'
+import NotificationsCard from '@/components/UI/organisms/NotificationsCard'
 
 function ScreenTime(params) {
     const [currentDate, setCurrentDate] = useState(
@@ -77,7 +78,8 @@ function ScreenTime(params) {
                         currentDate={currentDate}
                         onChangeCurrentDate={handleChangeCurrentDate}
                     />
-                    <MostUsedCard currentDate={currentDate} />
+                    {/* <MostUsedCard currentDate={currentDate} /> */}
+                    <NotificationsCard />
                 </div>
             </div>
         </div>

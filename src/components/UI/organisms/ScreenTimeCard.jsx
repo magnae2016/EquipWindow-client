@@ -236,6 +236,39 @@ function ScreenTimeCard({ currentDate, onChangeCurrentDate }) {
                       )}{' '}
                 {moment(updatedAt).format('A HH:mm')}에 업데이트 됨
             </div>
+            {dates[activeIndex] && (
+                <div className="toast">
+                    <div className="toast-content">
+                        <span className="toast-text">인사이트 및 제안</span>
+                        <div className="item-content">
+                            <div className="item-media">
+                                <div></div>
+                            </div>
+                            <div className="item-inner">
+                                <div className="item-title-row">
+                                    <div className="item-title">
+                                        알람이 많이 발생한 타임
+                                    </div>
+                                </div>
+                                <div className="item-subtitle">
+                                    {moment(dates[activeIndex]).format(
+                                        'M월 D일'
+                                    )}{' '}
+                                    {hh
+                                        .slice(0, 3)
+                                        .map((element) =>
+                                            moment(element, 'HH:mm').format(
+                                                'A hh:mm'
+                                            )
+                                        )
+                                        .join(', ')}
+                                    에 알람이 많이 발생했습니다.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }
