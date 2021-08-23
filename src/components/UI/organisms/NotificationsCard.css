@@ -111,16 +111,6 @@
     color: #808082;
 }
 
-.card-expandable .chart-area .chart {
-    height: 98px;
-    background-color: #f2f2f2;
-}
-
-.card-expandable .chart-area + .chart-area .chart {
-    height: 137px;
-    background-color: #f2f2f2;
-}
-
 .card-expandable .item-content {
     padding-top: 20px;
     padding-bottom: 31px;

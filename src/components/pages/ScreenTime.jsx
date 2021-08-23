@@ -78,8 +78,8 @@ function ScreenTime(params) {
                         currentDate={currentDate}
                         onChangeCurrentDate={handleChangeCurrentDate}
                     />
-                    {/* <MostUsedCard currentDate={currentDate} /> */}
-                    <NotificationsCard />
+                    <MostUsedCard currentDate={currentDate} />
+                    <NotificationsCard currentDate={currentDate} />
                 </div>
             </div>
         </div>
