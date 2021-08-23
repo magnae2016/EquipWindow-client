@@ -84,6 +84,16 @@ function ScreenTimeCard({ currentDate, onChangeCurrentDate }) {
         }
         c.push({ name: dayOfWeek, amt: t[index] })
     })
+
+    let hh = [...incrementSign]
+        .sort((d1, d2) => d2.diff - d1.diff)
+        .slice(0, 3)
+        .map((d) => d.Hour)
+    let hl = [...incrementSign]
+        .sort((d1, d2) => d1.diff - d2.diff)
+        .slice(0, 3)
+        .map((d) => d.Hour)
+
     return (
         <div>
             <div className="block-title">알람 발생 현황</div>
@@ -135,6 +145,8 @@ function ScreenTimeCard({ currentDate, onChangeCurrentDate }) {
                                     syncId="anyId"
                                     data={incrementSign}
                                     fill="#aeaeb2"
+                                    hh={hh}
+                                    hl={hl}
                                 />
                             </div>
                         </div>

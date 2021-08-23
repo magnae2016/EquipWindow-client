@@ -7,6 +7,7 @@ import {
     CartesianGrid,
     Tooltip,
     ResponsiveContainer,
+    Cell,
 } from 'recharts'
 
 class CustomizedXAxisTick extends PureComponent {
@@ -55,7 +56,14 @@ class CustomizedYAxisTick extends PureComponent {
     }
 }
 
-function BatteryPerformanceBarChart({ data, scale = 'auto', fill, syncId }) {
+function BatteryPerformanceBarChart({
+    data,
+    scale = 'auto',
+    fill,
+    syncId,
+    hh = [],
+    hl = [],
+}) {
     return (
         <ResponsiveContainer width="100%" height={120}>
             <BarChart
@@ -106,12 +114,22 @@ function BatteryPerformanceBarChart({ data, scale = 'auto', fill, syncId }) {
                     scale={scale}
                 />
                 <Tooltip />
-                <Bar
-                    dataKey="diff"
-                    stackId="a"
-                    fill={fill}
-                    isAnimationActive={false}
-                />
+                <Bar dataKey="diff" stackId="a" isAnimationActive={false}>
+                    {data.map((entry, index) => {
+                        return (
+                            <Cell
+                                key={`cell-${index}`}
+                                fill={
+                                    hh.includes(entry.Hour)
+                                        ? '#48484a'
+                                        : hl.includes(entry.Hour)
+                                        ? '#48484a'
+                                        : fill
+                                }
+                            />
+                        )
+                    })}
+                </Bar>
             </BarChart>
         </ResponsiveContainer>
     )
