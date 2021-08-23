@@ -10,7 +10,7 @@ function Sidebar(params) {
                     <div className="appbar-inner">
                         <div className="navbar">
                             <div className="navbar-inner">
-                                <h1 className="title">설정</h1>
+                                <h1 className="title">로그 분석</h1>
                                 <div className="subnavbar">
                                     <div className="searchbar">
                                         <div className="searchbar-inner">
