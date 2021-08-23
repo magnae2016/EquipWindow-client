@@ -6,7 +6,7 @@ import ScreenTimeStackedBarChart from '@/components/UI/atoms/ScreenTimeStackedBa
 import BatteryPerformanceBarChart from '@/components/UI/atoms/BatteryPerformanceBarChart'
 
 function ScreenTimeCard({ currentDate, onChangeCurrentDate }) {
-    const date = moment(currentDate)
+    const date = moment(currentDate, 'YYYY-MM-DD').local()
     const [dates, setDates] = useState([])
     const [errors, setErrors] = useState([])
     const [downs, setDowns] = useState([])
@@ -95,7 +95,7 @@ function ScreenTimeCard({ currentDate, onChangeCurrentDate }) {
                                 ? moment(dates[activeIndex]).format(
                                       formatString
                                   )
-                                : moment(dates.slice(-2)[0]).format(
+                                : moment(dates.slice(-1)[0]).format(
                                       formatString
                                   )}
                         </div>

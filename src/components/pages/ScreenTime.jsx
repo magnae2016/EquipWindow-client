@@ -6,7 +6,9 @@ import ScreenTimeCard from '@/components/UI/organisms/ScreenTimeCard'
 import MostUsedCard from '@/components/UI/organisms/MostUsedCard'
 
 function ScreenTime(params) {
-    const [currentDate, setCurrentDate] = useState(new Date())
+    const [currentDate, setCurrentDate] = useState(
+        moment().local().format('YYYY-MM-DD')
+    )
     const [scrollPosition, setScrollPosition] = useState(0)
     const scrollView = useRef(null)
     const updateScroll = () => {
