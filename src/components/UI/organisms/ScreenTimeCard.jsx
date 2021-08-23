@@ -87,11 +87,11 @@ function ScreenTimeCard({ currentDate, onChangeCurrentDate }) {
 
     let hh = [...incrementSign]
         .sort((d1, d2) => d2.diff - d1.diff)
-        .slice(0, 3)
+        .slice(0, 5)
         .map((d) => d.Hour)
     let hl = [...incrementSign]
         .sort((d1, d2) => d1.diff - d2.diff)
-        .slice(0, 3)
+        .slice(0, 5)
         .map((d) => d.Hour)
 
     return (
@@ -144,7 +144,7 @@ function ScreenTimeCard({ currentDate, onChangeCurrentDate }) {
                                 <BatteryPerformanceBarChart
                                     syncId="anyId"
                                     data={incrementSign}
-                                    fill="#aeaeb2"
+                                    fill="#d1d1d6"
                                     hh={hh}
                                     hl={hl}
                                 />

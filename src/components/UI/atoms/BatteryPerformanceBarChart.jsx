@@ -121,9 +121,9 @@ function BatteryPerformanceBarChart({
                                 key={`cell-${index}`}
                                 fill={
                                     hh.includes(entry.Hour)
-                                        ? '#48484a'
+                                        ? '#ff375f'
                                         : hl.includes(entry.Hour)
-                                        ? '#48484a'
+                                        ? '#636366'
                                         : fill
                                 }
                             />
