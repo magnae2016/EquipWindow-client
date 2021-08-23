@@ -9,16 +9,6 @@ function ScreenTime(params) {
     const [currentDate, setCurrentDate] = useState(
         moment().local().format('YYYY-MM-DD')
     )
-    const [scrollPosition, setScrollPosition] = useState(0)
-    const scrollView = useRef(null)
-    const updateScroll = () => {
-        setScrollPosition(
-            scrollView.current.scrollY || scrollView.current.scrollTop
-        )
-    }
-    useEffect(() => {
-        scrollView.current.addEventListener('scroll', updateScroll)
-    })
 
     function handleChangeCurrentDate(date) {
         setCurrentDate(date)
@@ -26,13 +16,7 @@ function ScreenTime(params) {
     return (
         <div className="page">
             <div className="navbars">
-                <div
-                    className={
-                        scrollPosition < 100
-                            ? 'navbar navbar-current hide'
-                            : 'navbar navbar-current show'
-                    }
-                >
+                <div className="navbar navbar-current hide">
                     <div className="appbar">
                         <div className="appbar-inner">
                             <div className="left">
@@ -72,7 +56,7 @@ function ScreenTime(params) {
                     </div>
                 </div>
             </div>
-            <div className="block" ref={scrollView}>
+            <div className="block">
                 <div className="page-content">
                     <div className="subnavbar">
                         <div className="subnavbar-inner">
