@@ -5,42 +5,19 @@ import axios from 'axios'
 import ScreenTimeStackedBarChart from '@/components/UI/atoms/ScreenTimeStackedBarChart'
 import BatteryPerformanceBarChart from '@/components/UI/atoms/BatteryPerformanceBarChart'
 
-function ScreenTimeCard({ currentDate, onChangeCurrentDate }) {
+function ScreenTimeCard({
+    errors,
+    downs,
+    updatedAt,
+    dates,
+    currentDate,
+    onChangeCurrentDate,
+}) {
     const date = moment(currentDate, 'YYYY-MM-DD').local()
-    const [dates, setDates] = useState([])
-    const [errors, setErrors] = useState([])
-    const [downs, setDowns] = useState([])
     const [increment, setIncrement] = useState([])
     const [incrementSign, setIncrementSign] = useState([])
-    const [updatedAt, setUpdatedAt] = useState('')
     const [activeIndex, setActiveIndex] = useState(undefined)
-    const subtract7days = date.clone().subtract(6, 'days').format('YYYY-MM-DD')
     const formatString = 'M월 D일 dddd'
-    const promise1 = axios.get('/api/v1/alarms/error', {
-        params: {
-            startDate: subtract7days,
-        },
-    })
-
-    const promise2 = axios.get('/api/v1/alarms/down', {
-        params: {
-            startDate: subtract7days,
-        },
-    })
-
-    useEffect(() => {
-        async function fetchData() {
-            const [response1, response2] = await Promise.all([
-                promise1,
-                promise2,
-            ])
-            setErrors(response1.data.datas)
-            setDowns(response2.data.datas)
-            setUpdatedAt(response1.data.last_update_time)
-            setDates(response1.data.datas.map((element) => element['DATE']))
-        }
-        fetchData()
-    }, [])
 
     const handleClick = useCallback(
         (entry, index) => {

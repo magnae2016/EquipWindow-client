@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import moment from 'moment'
 import 'moment/locale/ko'
+import axios from 'axios'
 import './ScreenTime.css'
 import ScreenTimeCard from '@/components/UI/organisms/ScreenTimeCard'
 import MostUsedCard from '@/components/UI/organisms/MostUsedCard'
@@ -10,10 +11,44 @@ function ScreenTime(params) {
     const [currentDate, setCurrentDate] = useState(
         moment().local().format('YYYY-MM-DD')
     )
+    const [errors, setErrors] = useState([])
+    const [downs, setDowns] = useState([])
+    const [updatedAt, setUpdatedAt] = useState('')
+    const [dates, setDates] = useState([])
+    const subtract7days = moment(currentDate, 'YYYY-MM-DD')
+        .subtract(13, 'days')
+        .format('YYYY-MM-DD')
 
     function handleChangeCurrentDate(date) {
         setCurrentDate(date)
     }
+
+    const promise1 = axios.get('/api/v1/alarms/error', {
+        params: {
+            startDate: subtract7days,
+        },
+    })
+
+    const promise2 = axios.get('/api/v1/alarms/down', {
+        params: {
+            startDate: subtract7days,
+        },
+    })
+
+    useEffect(() => {
+        async function fetchData() {
+            const [response1, response2] = await Promise.all([
+                promise1,
+                promise2,
+            ])
+            setErrors(response1.data.datas)
+            setDowns(response2.data.datas)
+            setUpdatedAt(response1.data.last_update_time)
+            setDates(response1.data.datas.map((element) => element['DATE']))
+        }
+        fetchData()
+    }, [])
+
     return (
         <div className="page">
             <div className="navbars">
@@ -75,11 +110,19 @@ function ScreenTime(params) {
                         </div>
                     </div>
                     <ScreenTimeCard
+                        errors={errors}
+                        downs={downs}
+                        updatedAt={updatedAt}
+                        dates={dates}
                         currentDate={currentDate}
                         onChangeCurrentDate={handleChangeCurrentDate}
                     />
                     <MostUsedCard currentDate={currentDate} />
-                    <NotificationsCard currentDate={currentDate} />
+                    <NotificationsCard
+                        error={errors}
+                        down={downs}
+                        currentDate={currentDate}
+                    />
                 </div>
             </div>
         </div>
