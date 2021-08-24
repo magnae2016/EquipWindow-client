@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { Fragment, useCallback, useEffect, useState } from 'react'
 import moment from 'moment'
 import 'moment/locale/ko'
 import axios from 'axios'
@@ -109,7 +109,7 @@ function ScreenTimeCard({
                         />
                     </div>
                     {activeIndex != undefined && (
-                        <div>
+                        <Fragment>
                             <div className="chart">
                                 <BatteryPerformanceBarChart
                                     syncId="anyId"
@@ -126,7 +126,7 @@ function ScreenTimeCard({
                                     hl={hl}
                                 />
                             </div>
-                        </div>
+                        </Fragment>
                     )}
                     <div className="list">
                         <ul>
