@@ -59,7 +59,7 @@ function NotificationsCard({ currentDate, error = [], down = [] }) {
             setConsumed(Number(response3.data[0].CONSUMED))
             setConsumedCount(Number(response3.data[0].COUNT))
             setOrder(response4.data)
-            if (filter == 'errors') setTarget([...error])
+            if (filter == 'error') setTarget([...error])
             else setTarget([...down])
             const df = response2.data.map((element) => element['diff'])
             const av = df.reduce((a, b) => a + b, 0) / df.length
