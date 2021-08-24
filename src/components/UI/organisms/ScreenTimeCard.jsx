@@ -16,32 +16,35 @@ function ScreenTimeCard({
     const date = moment(currentDate, 'YYYY-MM-DD').local()
     const [increment, setIncrement] = useState([])
     const [incrementSign, setIncrementSign] = useState([])
-    const [activeIndex, setActiveIndex] = useState(undefined)
+    const [activeIndex, setActiveIndex] = useState(dates.length - 1)
     const formatString = 'M월 D일 dddd'
+
+    useEffect(() => {
+        onChangeCurrentDate(dates[activeIndex])
+        async function fetchData() {
+            const response = await axios.get('/api/v1/alarms/increment', {
+                params: { startDate: dates[activeIndex] },
+            })
+            setIncrement(response.data)
+            const df = response.data.map((element) => element['diff'])
+            const av = df.reduce((a, b) => a + b, 0) / df.length
+            setIncrementSign(
+                df.map((element, i) => {
+                    return Object.assign(
+                        {},
+                        { Hour: response.data[i].Hour, diff: element - av }
+                    )
+                })
+            )
+        }
+        fetchData()
+    }, [activeIndex])
 
     const handleClick = useCallback(
         (entry, index) => {
-            onChangeCurrentDate(dates[index])
-            async function fetchData() {
-                const response = await axios.get('/api/v1/alarms/increment', {
-                    params: { startDate: dates[index] },
-                })
-                setIncrement(response.data)
-                const df = response.data.map((element) => element['diff'])
-                const av = df.reduce((a, b) => a + b, 0) / df.length
-                setIncrementSign(
-                    df.map((element, i) => {
-                        return Object.assign(
-                            {},
-                            { Hour: response.data[i].Hour, diff: element - av }
-                        )
-                    })
-                )
-            }
-            fetchData()
             setActiveIndex(index)
         },
-        [setActiveIndex, dates]
+        [activeIndex]
     )
 
     const d = errors.map((element) => element['DATE'])
